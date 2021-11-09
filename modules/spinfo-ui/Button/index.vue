@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="['btn', type]"
+    :class="['btn', `type-${type}`, `size-${size}`]"
     @click="btnClick($event)"
   >
     <slot></slot>
@@ -11,7 +11,8 @@
 export default {
   name: 'SpButton',
   props: {
-    type: String
+    type: String,
+    size: String
   },
   methods: {
     btnClick(e) {
@@ -23,33 +24,46 @@ export default {
 
 <style scoped lang="scss">
   .btn {
-    height: 35px;
-    padding: 0 15px;
+    height: 36px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-radius: 4px;
     border: 1px solid #ddd;
     background-color: #fff;
+  }
 
-    &.primary {
+  .type {
+    &-primary {
       border: 1px solid #ddd;
       background-color: blue;
       color: white;
     }
-
-    &.success {
+    &-success {
       border: 1px solid #ddd;
       background-color: green;
       color: white;
     }
-
-    &.danger {
+    &-danger {
       border: 1px solid #ddd;
       background-color: red;
       color: white;
     }
-
-    &.warning {
+    &-warning {
       border: 1px solid #ddd;
       background-color: orange;
       color: white;
+    }
+  }
+
+  .size {
+    &-big {
+      height: 40px;
+    }
+    &-mini {
+      height: 32px;
+      font-size: 12px;
+      border-radius: 3px;
+      padding: 0 15px;
     }
   }
 </style>

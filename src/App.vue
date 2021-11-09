@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sp-button type="success" @click="output">按钮来了</sp-button>
+    <sp-button size="big" type="warning" @click="output">按钮来了</sp-button>
     <hr>
     <sp-input placeholder="okok"></sp-input>
   </div>
