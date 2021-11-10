@@ -30,6 +30,8 @@ export default {
     border-radius: 4px;
     border: 1px solid #ddd;
     background-color: #fff;
+    margin-right: 10px;
+    cursor: pointer;
   }
 
   .type {
