@@ -19,18 +19,24 @@
         <sp-collapse-item title="标题3" name="3">内容3</sp-collapse-item>
       </sp-collapse>
     </div>
+    <div class="box">
+      <Communication></Communication>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-  methods: {
-    output(e) {
-      // console.log(e)
+  import Communication from './components/communication/index'
+
+  export default {
+    name: 'App',
+    components: {Communication},
+    methods: {
+      output(e) {
+        // console.log(e)
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
