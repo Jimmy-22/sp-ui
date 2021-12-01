@@ -2,7 +2,7 @@
   <div>
     <h1>组件通信</h1>
     <Child1></Child1>
-    <Child2></Child2>
+    <Child2 foo="fooooo" @hi="onHi"></Child2>
   </div>
 </template>
 <script>
@@ -11,9 +11,12 @@
 
   export default {
     components: {Child1, Child2},
-    data() {
-      return {
-
+    mounted() {
+      console.log(this.$children)
+    },
+    methods: {
+      onHi() {
+        console.log('from sunzi hi')
       }
     }
   }

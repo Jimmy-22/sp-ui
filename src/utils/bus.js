@@ -6,7 +6,7 @@ class eventBus {
 //   'name1': [fn1, fn2, fn3],
 //   'name2': [fn1, fn2, fn3]
 // }
-  $on(name, fn ) {
+  $on(name, fn) {
     //把fn推进this.cache[name]数组
     this.cache[name] = this.cache[name] || []
     this.cache[name].push(fn)
