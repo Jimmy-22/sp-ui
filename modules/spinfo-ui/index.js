@@ -1,26 +1,34 @@
 import Button from './Button'
-import Input from './Input'
+import Input from './Form/Input'
+import FormItem from './Form/FormItem'
+import Form from "./Form/Form";
 import Collapse from './Collapse/collapse'
 import CollapseItem from './Collapse/collapse-item'
 
 const SpinfoUI = {}
 const SpButton = {}
 const SpInput = {}
+const SpFormItem = {}
+const SpForm = {}
 const SpCollapse = {}
 const SpCollapseItem = {}
 
-const COMPONENTS = [ Button, Input, Collapse, CollapseItem ]
+const COMPONENTS = [ Button, Input, FormItem, Form, Collapse, CollapseItem ]
 
 SpButton.install = Vue => Vue.component(Button.name, Button)
 SpInput.install = Vue => Vue.component(Input.name, Input)
+SpFormItem.install = Vue => Vue.component(FormItem.name, FormItem)
+SpForm.install = Vue => Vue.component(Form.name, Form)
 SpCollapse.install = Vue => Vue.component(Collapse.name, Collapse)
 SpCollapseItem.install = Vue => Vue.component(CollapseItem.name, CollapseItem)
 
 export {
-  SpButton, 
+  SpButton,
   SpInput,
   SpCollapse,
-  SpCollapseItem
+  SpCollapseItem,
+  SpFormItem,
+  SpForm
 }
 
 SpinfoUI.install = function(Vue, options) {

@@ -11,7 +11,11 @@
       <sp-input disabled value="disabled"></sp-input>
       <div class="box">
         双向绑定demo
-        <sp-input v-model="model.username"></sp-input>   {{model.username}}
+        <sp-form :model="model">
+          <sp-form-item label="用户名">
+            <sp-input v-model="model.username"></sp-input>   {{model.username}}
+          </sp-form-item>
+        </sp-form>
       </div>
       <!--    <sp-input error="用户名不能少于两个字" value="sss"></sp-input>-->
     </div>
