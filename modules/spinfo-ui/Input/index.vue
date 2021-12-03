@@ -1,11 +1,10 @@
 <template>
   <div class="wrapper" :class="{error}">
-    <input
+    <input v-bind="$attrs"
       type="text"
-      :placeholder="placeholder"
       :value="value"
-      :disabled="disabled"
       :class="['input',`input-${size}`]"
+      @input="onInput"
     >
     <template v-if="error">
       <span style="color: #F1453D">{{error}}</span>
@@ -15,15 +14,16 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   name:'SpInput',
   props: {
-    placeholder: String,
     value: String,
     error: String,
-    size: String,
-    disabled: {
-      type: Boolean,
-      default: false
+    size: String
+  },
+  methods: {
+    onInput(e) {
+      this.$emit('input', e.target.value)
     }
   }
 }

@@ -7,9 +7,12 @@
     </div>
     <div class="box">
       <sp-input size="big" placeholder="大号"></sp-input>
-      <sp-input placeholder="普通"></sp-input>
       <sp-input size="mini" placeholder="小号"></sp-input>
       <sp-input disabled value="disabled"></sp-input>
+      <div class="box">
+        双向绑定demo
+        <sp-input v-model="model.username"></sp-input>   {{model.username}}
+      </div>
       <!--    <sp-input error="用户名不能少于两个字" value="sss"></sp-input>-->
     </div>
     <div class="box">
@@ -31,6 +34,13 @@
   export default {
     name: 'App',
     components: {Communication},
+    data() {
+      return {
+        model: {
+          username: 'messi'
+        }
+      }
+    },
     methods: {
       output(e) {
         // console.log(e)
