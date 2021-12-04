@@ -11,9 +11,12 @@
       <sp-input disabled value="disabled"></sp-input>
       <div class="box">
         双向绑定demo
-        <sp-form :model="model">
-          <sp-form-item label="用户名">
+        <sp-form :model="model" :rules="rules" ref="loginForm">
+          <sp-form-item label="用户名" prop="username">
             <sp-input v-model="model.username"></sp-input>   {{model.username}}
+          </sp-form-item>
+          <sp-form-item>
+            <button @click="submit">提交</button>
           </sp-form-item>
         </sp-form>
       </div>
@@ -42,12 +45,26 @@
       return {
         model: {
           username: 'messi'
+        },
+        rules: {
+          username: [
+            {required: true, message: '请输入用户名'}
+          ]
         }
       }
     },
     methods: {
       output(e) {
         // console.log(e)
+      },
+      submit() {
+        this.$refs.loginForm.validate(isValid => {
+          if (isValid) {
+            console.log('okokok')
+          } else {
+            alert('false')
+          }
+        })
       }
     }
   }
