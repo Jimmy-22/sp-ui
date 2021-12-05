@@ -32,11 +32,16 @@
     <div class="box">
       <Communication></Communication>
     </div>
+    <div class="box">
+      <sp-notice title="试试看" message="这是信息"></sp-notice>
+    </div>
   </div>
 </template>
 
 <script>
   import Communication from './components/communication/index'
+  import create from '@/utils/create'
+  import Notice from '../modules/spinfo-ui/Notice/Notice'
 
   export default {
     name: 'App',
@@ -59,12 +64,19 @@
       },
       submit() {
         this.$refs.loginForm.validate(isValid => {
-          if (isValid) {
-            console.log('okokok')
-          } else {
-            alert('false')
-          }
+          create(Notice, {
+            title: '提示信息',
+            message: isValid ? '成功！！！': '失败！！！',
+            duration: 3000
+          }).show()
         })
+        // this.$refs.loginForm.validate(isValid => {
+        //   if (isValid) {
+        //     console.log('okokok')
+        //   } else {
+        //     alert('false')
+        //   }
+        // })
       }
     }
   }
@@ -74,5 +86,6 @@
   .box {
     margin-top: 20px;
   }
+  button {cursor: pointer;width: 100px;height: 40px;border: 1px solid blue;}
 </style>
 

@@ -4,6 +4,7 @@ import FormItem from './Form/FormItem'
 import Form from "./Form/Form";
 import Collapse from './Collapse/collapse'
 import CollapseItem from './Collapse/collapse-item'
+import Notice from "./Notice/Notice";
 
 const SpinfoUI = {}
 const SpButton = {}
@@ -12,8 +13,10 @@ const SpFormItem = {}
 const SpForm = {}
 const SpCollapse = {}
 const SpCollapseItem = {}
+const SpNotice = {}
 
-const COMPONENTS = [ Button, Input, FormItem, Form, Collapse, CollapseItem ]
+
+const COMPONENTS = [ Button, Input, FormItem, Form, Collapse, CollapseItem, Notice ]
 
 SpButton.install = Vue => Vue.component(Button.name, Button)
 SpInput.install = Vue => Vue.component(Input.name, Input)
@@ -21,6 +24,7 @@ SpFormItem.install = Vue => Vue.component(FormItem.name, FormItem)
 SpForm.install = Vue => Vue.component(Form.name, Form)
 SpCollapse.install = Vue => Vue.component(Collapse.name, Collapse)
 SpCollapseItem.install = Vue => Vue.component(CollapseItem.name, CollapseItem)
+SpNotice.install = Vue => Vue.component(Notice.name, Notice)
 
 export {
   SpButton,
@@ -28,7 +32,8 @@ export {
   SpCollapse,
   SpCollapseItem,
   SpFormItem,
-  SpForm
+  SpForm,
+  SpNotice
 }
 
 SpinfoUI.install = function(Vue, options) {
