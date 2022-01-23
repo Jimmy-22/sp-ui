@@ -1,91 +1,82 @@
 <template>
-  <div id="app">
-    <div class="box">
-      <sp-button size="big" type="warning" @click="output">大号按钮</sp-button>
-      <sp-button type="primary" @click="output">普通按钮</sp-button>
-      <sp-button size="mini" type="danger" @click="output">小号按钮</sp-button>
-    </div>
-    <div class="box">
-      <sp-input size="big" placeholder="大号"></sp-input>
-      <sp-input size="mini" placeholder="小号"></sp-input>
-      <sp-input disabled value="disabled"></sp-input>
-      <div class="box">
-        双向绑定demo
-        <sp-form :model="model" :rules="rules" ref="loginForm">
-          <sp-form-item label="用户名" prop="username">
-            <sp-input v-model="model.username"></sp-input>   {{model.username}}
-          </sp-form-item>
-          <sp-form-item>
-            <button @click="submit">提交</button>
-          </sp-form-item>
-        </sp-form>
-      </div>
-      <!--    <sp-input error="用户名不能少于两个字" value="sss"></sp-input>-->
-    </div>
-    <div class="box">
-      <sp-collapse>
-        <sp-collapse-item title="标题1" name="1">内容1</sp-collapse-item>
-        <sp-collapse-item title="标题2" name="2">内容2</sp-collapse-item>
-        <sp-collapse-item title="标题3" name="3">内容3</sp-collapse-item>
-      </sp-collapse>
-    </div>
-    <div class="box">
-      <Communication></Communication>
-    </div>
-    <div class="box">
-      <sp-notice title="试试看" message="这是信息"></sp-notice>
-    </div>
-  </div>
+  <el-container>
+    <el-header>
+      <el-menu
+        default-active="1"
+        class="el-menu-demo"
+        mode="horizontal"
+        background-color="#545c64"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+      >
+        <el-menu-item index="1">SP UI</el-menu-item>
+      </el-menu>
+    </el-header>
+    <el-container>
+      <el-aside width="200px">
+        <el-menu
+          default-active="2"
+          class="el-menu-vertical-demo"
+          active-text-color="#ffd04b"
+        >
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-menu"></i>
+              <span>入门</span>
+            </template>
+            <el-submenu index="1-2">
+              <template slot="title">快速上手</template>
+              <el-menu-item index="1-2-1">安装</el-menu-item>
+              <el-menu-item index="1-2-2">Hello World</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>导航一</span>
+            </template>
+            <router-link to="/input">
+              <el-menu-item index="2-1">Input组件</el-menu-item>
+            </router-link>
+            <router-link to="/button">
+              <el-menu-item index="2-2">Button组件</el-menu-item>
+            </router-link>
+            <router-link to="/collapse">
+              <el-menu-item index="2-3">Collapse组件</el-menu-item>
+            </router-link>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <el-container>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
+  </el-container>
 </template>
 
-<script>
-  import Communication from './components/communication/index'
-  import create from '@/utils/create'
-  import Notice from '../modules/spinfo-ui/Notice/Notice'
+<script></script>
+<style>
+.el-header,
+.el-footer {
+  background-color: #b3c0d1;
+  color: #333;
+  text-align: center;
+  padding: 0 !important;
+}
 
-  export default {
-    name: 'App',
-    components: {Communication},
-    data() {
-      return {
-        model: {
-          username: 'messi'
-        },
-        rules: {
-          username: [
-            {required: true, message: '请输入用户名'}
-          ]
-        }
-      }
-    },
-    methods: {
-      output(e) {
-        // console.log(e)
-      },
-      submit() {
-        this.$refs.loginForm.validate(isValid => {
-          create(Notice, {
-            title: '提示信息',
-            message: isValid ? '成功！！！': '失败！！！',
-            duration: 3000
-          }).show()
-        })
-        // this.$refs.loginForm.validate(isValid => {
-        //   if (isValid) {
-        //     console.log('okokok')
-        //   } else {
-        //     alert('false')
-        //   }
-        // })
-      }
-    }
-  }
-</script>
+.el-aside {
+  background-color: #d3dce6;
+  color: #333;
+}
 
-<style lang="scss" scoped>
-  .box {
-    margin-top: 20px;
-  }
-  button {cursor: pointer;width: 100px;height: 40px;border: 1px solid blue;}
+.el-main {
+  background-color: #e9eef3;
+  color: #333;
+}
+
+body > .el-container {
+  margin-bottom: 40px;
+}
 </style>
-

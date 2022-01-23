@@ -1,9 +1,20 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import App from "./App.vue";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import router from "./router";
 //import SpUI from '../modules/spinfo-ui'
-import { SpButton, SpFormItem, SpInput, SpForm, SpCollapse, SpCollapseItem, SpNotice } from '../modules/spinfo-ui'
-import '../modules/spinfo-ui/common.css'
-import Bus from './utils/bus.js'
+import {
+  SpButton,
+  SpFormItem,
+  SpInput,
+  SpForm,
+  SpCollapse,
+  SpCollapseItem,
+  SpNotice,
+} from "../modules/spinfo-ui";
+import "../modules/spinfo-ui/common.css";
+import Bus from "./utils/bus.js";
 
 //按需加载
 // Vue.use(SpUI, {
@@ -12,18 +23,19 @@ import Bus from './utils/bus.js'
 //     'SpInput'
 //   ]
 // })
-Vue.use(SpButton)
-Vue.use(SpInput)
-Vue.use(SpFormItem)
-Vue.use(SpForm)
-Vue.use(SpCollapse)
-Vue.use(SpCollapseItem)
-Vue.use(SpNotice)
-Vue.prototype.$bus = new Bus()
+Vue.use(ElementUI);
+Vue.use(SpButton);
+Vue.use(SpInput);
+Vue.use(SpFormItem);
+Vue.use(SpForm);
+Vue.use(SpCollapse);
+Vue.use(SpCollapseItem);
+Vue.use(SpNotice);
+Vue.prototype.$bus = new Bus();
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
-
+  router,
+  render: (h) => h(App),
+}).$mount("#app");
