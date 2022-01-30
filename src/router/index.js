@@ -6,6 +6,7 @@ Vue.use(Router);
 import Button from "../views/Button.vue";
 import Input from "../views/Input.vue";
 import Collapse from "../views/Collapse.vue";
+import Pager from "../views/Pager.vue";
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: "/collapse",
     name: "collapse",
     component: Collapse,
+  },
+  {
+    path: "/pager",
+    name: "pager",
+    component: Pager,
   },
 ];
 
