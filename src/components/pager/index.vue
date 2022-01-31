@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <span v-for="page in pages">
+  <div class="pager">
+    <span
+      v-for="page in pages"
+      class="pager-item"
+      :class="{ active: page === current }"
+    >
       {{ page }}
     </span>
   </div>
@@ -24,17 +28,17 @@ export default {
     }
   },
   data() {
-    let pages = [
-      1,
-      this.total,
-      this.current,
-      this.current + 1,
-      this.current + 2,
-      this.current - 1,
-      this.current - 2
-    ]
-    let u = unique(pages.sort((a, b) => a - b))
-    let unique_pages = u.reduce((prev, current, index, array) => {
+    let pages = unique(
+      [
+        1,
+        this.total,
+        this.current,
+        this.current + 1,
+        this.current + 2,
+        this.current - 1,
+        this.current - 2
+      ].sort((a, b) => a - b)
+    ).reduce((prev, current, index, array) => {
       prev.push(current)
       array[index + 1] !== undefined &&
         array[index + 1] - array[index] > 1 &&
@@ -42,7 +46,7 @@ export default {
       return prev
     }, [])
     return {
-      pages: unique_pages
+      pages
     }
   }
 }
@@ -57,4 +61,24 @@ function unique(array) {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.pager {
+  &-item {
+    border: 1px solid grey;
+    padding: 0 8px;
+    margin: 0 4px;
+    border-radius: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &.active,
+    &:hover {
+      background-color: pink;
+    }
+    &.active {
+      cursor: default;
+    }
+  }
+}
+</style>
