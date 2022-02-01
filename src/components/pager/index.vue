@@ -1,14 +1,25 @@
 <template>
   <div class="pager">
-    <span class="left" :class="{ disabled: current === 1 }"> < 上一页 </span>
+    <span
+      @click="onclickPage(current - 1)"
+      class="left"
+      :class="{ disabled: current === 1 }"
+    >
+      < 上一页
+    </span>
     <span
       v-for="page in pages"
       class="pager-item"
       :class="{ active: page === current, points: page === '...' }"
+      @click="onclickPage(page)"
     >
       {{ page }}
     </span>
-    <span class="right" :class="{ disabled: current === total }">
+    <span
+      @click="onclickPage(current + 1)"
+      class="right"
+      :class="{ disabled: current === total }"
+    >
       下一页 >
     </span>
   </div>
@@ -31,32 +42,38 @@ export default {
       default: true
     }
   },
-  data() {
-    let pages = unique(
-      [
-        1,
-        this.total,
-        this.current,
-        this.current + 1,
-        this.current + 2,
-        this.current - 1,
-        this.current - 2
-      ].sort((a, b) => a - b)
-    )
-      .reduce((prev, current, index, array) => {
-        prev.push(current)
-        array[index + 1] !== undefined &&
-          array[index + 1] - array[index] > 1 &&
-          prev.push('...')
-        return prev
-      }, [])
-      .filter((item) => {
-        if ((item > 0 && item <= this.total) || item === '...') {
-          return item
-        }
-      })
-    return {
-      pages
+  computed: {
+    pages() {
+      return unique(
+        [
+          1,
+          this.total,
+          this.current,
+          this.current + 1,
+          this.current + 2,
+          this.current - 1,
+          this.current - 2
+        ].sort((a, b) => a - b)
+      )
+        .reduce((prev, current, index, array) => {
+          prev.push(current)
+          array[index + 1] !== undefined &&
+            array[index + 1] - array[index] > 1 &&
+            prev.push('...')
+          return prev
+        }, [])
+        .filter((item) => {
+          if ((item > 0 && item <= this.total) || item === '...') {
+            return item
+          }
+        })
+    }
+  },
+  methods: {
+    onclickPage(n) {
+      if (n !== '...') {
+        this.$emit('update:current', n)
+      }
     }
   }
 }

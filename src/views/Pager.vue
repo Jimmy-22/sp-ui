@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sp-pager :total="20" :current="20"></sp-pager>
+    <sp-pager :total="20" :current.sync="current"></sp-pager>
   </div>
 </template>
 
@@ -8,6 +8,11 @@
 import SpPager from '../components/pager/index.vue'
 export default {
   name: 'Pager',
-  components: { SpPager }
+  components: { SpPager },
+  data() {
+    return {
+      current: 1
+    }
+  }
 }
 </script>
