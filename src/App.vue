@@ -45,7 +45,7 @@
               <el-menu-item index="2-3">Collapse组件</el-menu-item>
             </router-link>
             <router-link to="/pager">
-              <el-menu-item index="2-3">Pager组件</el-menu-item>
+              <el-menu-item index="2-4">Pager组件</el-menu-item>
             </router-link>
           </el-submenu>
         </el-menu>

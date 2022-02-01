@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sp-pager :total="20" :current="3"></sp-pager>
+    <sp-pager :total="20" :current="20"></sp-pager>
   </div>
 </template>
 

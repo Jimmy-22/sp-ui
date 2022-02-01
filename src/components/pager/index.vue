@@ -1,11 +1,15 @@
 <template>
   <div class="pager">
+    <span class="left" :class="{ disabled: current === 1 }"> < 上一页 </span>
     <span
       v-for="page in pages"
       class="pager-item"
-      :class="{ active: page === current }"
+      :class="{ active: page === current, points: page === '...' }"
     >
       {{ page }}
+    </span>
+    <span class="right" :class="{ disabled: current === total }">
+      下一页 >
     </span>
   </div>
 </template>
@@ -38,13 +42,19 @@ export default {
         this.current - 1,
         this.current - 2
       ].sort((a, b) => a - b)
-    ).reduce((prev, current, index, array) => {
-      prev.push(current)
-      array[index + 1] !== undefined &&
-        array[index + 1] - array[index] > 1 &&
-        prev.push('...')
-      return prev
-    }, [])
+    )
+      .reduce((prev, current, index, array) => {
+        prev.push(current)
+        array[index + 1] !== undefined &&
+          array[index + 1] - array[index] > 1 &&
+          prev.push('...')
+        return prev
+      }, [])
+      .filter((item) => {
+        if ((item > 0 && item <= this.total) || item === '...') {
+          return item
+        }
+      })
     return {
       pages
     }
@@ -64,7 +74,7 @@ function unique(array) {
 <style lang="scss" scoped>
 .pager {
   &-item {
-    border: 1px solid grey;
+    border: 2px solid grey;
     padding: 0 8px;
     margin: 0 4px;
     border-radius: 4px;
@@ -74,11 +84,28 @@ function unique(array) {
     cursor: pointer;
     &.active,
     &:hover {
-      background-color: pink;
+      border-color: #58cfff;
     }
     &.active {
       cursor: default;
     }
+    &.points {
+      border: none;
+    }
   }
+}
+.left,
+.right {
+  &.disabled {
+    display: none;
+  }
+  border: 2px solid grey;
+  border-radius: 4px;
+  margin: 0 4px;
+  cursor: pointer;
+}
+.left:hover,
+.right:hover {
+  border-color: #58cfff;
 }
 </style>
