@@ -1,5 +1,5 @@
 <template>
-  <div class="pager">
+  <div class="pager" :class="{ hide: hideIfOnePage === true && total <= 1 }">
     <span
       @click="onclickPage(current - 1)"
       class="left"
@@ -90,6 +90,10 @@ function unique(array) {
 
 <style lang="scss" scoped>
 .pager {
+  &.hide {
+    display: none;
+  }
+  user-select: none;
   &-item {
     border: 2px solid grey;
     padding: 0 8px;

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <sp-pager :total="20" :current.sync="current"></sp-pager>
+    <sp-pager
+      :total="20"
+      :hide-if-one-page="false"
+      :current.sync="current"
+    ></sp-pager>
   </div>
 </template>
 
