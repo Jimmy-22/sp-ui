@@ -1,7 +1,7 @@
 <template>
   <div class="collapse-item">
     <div class="title" @click="toggle">
-      {{title}}
+      {{ title }}
     </div>
     <div class="content" v-if="open">
       <slot></slot>
@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  name: "SpCollapseItem",
+  name: 'SpCollapseItem',
   props: {
     title: {
       type: String,
@@ -18,7 +18,7 @@ export default {
     },
     name: {
       type: String,
-      requireL: true
+      required: true
     }
   },
   data() {
@@ -32,13 +32,14 @@ export default {
   },
   mounted() {
     console.log('son mounted')
-    this.eventBus && this.eventBus.$on('updated: selected', (name) => {
-      if (name !== this.name) {
-        this.close()
-      } else {
-        this.show()
-      }
-    })
+    this.eventBus &&
+      this.eventBus.$on('updated: selected', (name) => {
+        if (name !== this.name) {
+          this.close()
+        } else {
+          this.show()
+        }
+      })
   },
   methods: {
     toggle() {
@@ -58,31 +59,31 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-  $grey: #ddd;
-  $border-radius: 4px;
-  .collapse-item {
+$grey: #ddd;
+$border-radius: 4px;
+.collapse-item {
+  > .title {
+    min-height: 35px;
+    font-size: 14px;
+    background-color: pink;
+    border: 1px solid $grey;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
+    cursor: pointer;
+  }
+  &:first-child {
     > .title {
-      min-height: 35px;
-      font-size: 14px;
-      background-color: pink;
-      border: 1px solid $grey;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      margin-top: -1px;
-      margin-left: -1px;
-      margin-right: -1px;
-      cursor: pointer;
-    }
-    &:first-child{
-      > .title {
-        border-top-left-radius: $border-radius;
-        border-top-right-radius: $border-radius;
-      }
-    }
-    > .content {
-      min-height: 50px;
-      padding: 8px;
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
     }
   }
+  > .content {
+    min-height: 50px;
+    padding: 8px;
+  }
+}
 </style>

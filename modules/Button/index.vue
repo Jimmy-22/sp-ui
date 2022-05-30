@@ -44,7 +44,7 @@ export default {
   }
   &-danger {
     border: 1px solid #ddd;
-    background-color: red;
+    background-color: #fd543e;
     color: white;
   }
   &-warning {
