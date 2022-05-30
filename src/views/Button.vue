@@ -10,10 +10,10 @@
 export default {
   methods: {
     output(e) {
-      console.log(e);
-    },
-  },
-};
+      console.log(e)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

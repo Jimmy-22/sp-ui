@@ -13,7 +13,7 @@
         双向绑定demo
         <sp-form :model="model" :rules="rules" ref="loginForm">
           <sp-form-item label="用户名" prop="username">
-            <sp-input v-model="model.username"></sp-input>   {{model.username}}
+            <sp-input v-model="model.username"></sp-input> {{ model.username }}
           </sp-form-item>
           <sp-form-item>
             <button @click="submit">提交</button>
@@ -39,53 +39,55 @@
 </template>
 
 <script>
-  import Communication from './components/communication/index'
-  import create from '@/utils/create'
-  import Notice from '../modules/spinfo-ui/Notice/Notice'
+import Communication from './components/communication/index'
+import create from '@/utils/create'
+import Notice from '../modules/spinfo-ui/Notice/Notice'
 
-  export default {
-    name: 'App',
-    components: {Communication},
-    data() {
-      return {
-        model: {
-          username: 'messi'
-        },
-        rules: {
-          username: [
-            {required: true, message: '请输入用户名'}
-          ]
-        }
-      }
-    },
-    methods: {
-      output(e) {
-        // console.log(e)
+export default {
+  name: 'App',
+  components: { Communication },
+  data() {
+    return {
+      model: {
+        username: 'messi'
       },
-      submit() {
-        this.$refs.loginForm.validate(isValid => {
-          create(Notice, {
-            title: '提示信息',
-            message: isValid ? '成功！！！': '失败！！！',
-            duration: 3000
-          }).show()
-        })
-        // this.$refs.loginForm.validate(isValid => {
-        //   if (isValid) {
-        //     console.log('okokok')
-        //   } else {
-        //     alert('false')
-        //   }
-        // })
+      rules: {
+        username: [{ required: true, message: '请输入用户名' }]
       }
     }
+  },
+  methods: {
+    output(e) {
+      // console.log(e)
+    },
+    submit() {
+      this.$refs.loginForm.validate((isValid) => {
+        create(Notice, {
+          title: '提示信息',
+          message: isValid ? '成功！！！' : '失败！！！',
+          duration: 3000
+        }).show()
+      })
+      // this.$refs.loginForm.validate(isValid => {
+      //   if (isValid) {
+      //     console.log('okokok')
+      //   } else {
+      //     alert('false')
+      //   }
+      // })
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  .box {
-    margin-top: 20px;
-  }
-  button {cursor: pointer;width: 100px;height: 40px;border: 1px solid blue;}
+.box {
+  margin-top: 20px;
+}
+button {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  border: 1px solid blue;
+}
 </style>
-

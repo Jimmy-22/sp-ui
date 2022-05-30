@@ -28,22 +28,22 @@
 </template>
 
 <script>
-import Communication from "../components/communication/index";
-import create from "@/utils/create";
-import Notice from "../../modules/spinfo-ui/Notice/Notice";
+import Communication from '../components/communication/index'
+import create from '@/utils/create'
+import Notice from '../../modules/Notice/Notice'
 
 export default {
-  name: "App",
+  name: 'App',
   components: { Communication },
   data() {
     return {
       model: {
-        username: "messi",
+        username: 'messi'
       },
       rules: {
-        username: [{ required: true, message: "请输入用户名" }],
-      },
-    };
+        username: [{ required: true, message: '请输入用户名' }]
+      }
+    }
   },
   methods: {
     output(e) {
@@ -52,11 +52,11 @@ export default {
     submit() {
       this.$refs.loginForm.validate((isValid) => {
         create(Notice, {
-          title: "提示信息",
-          message: isValid ? "成功！！！" : "失败！！！",
-          duration: 3000,
-        }).show();
-      });
+          title: '提示信息',
+          message: isValid ? '成功！！！' : '失败！！！',
+          duration: 3000
+        }).show()
+      })
       // this.$refs.loginForm.validate(isValid => {
       //   if (isValid) {
       //     console.log('okokok')
@@ -64,9 +64,9 @@ export default {
       //     alert('false')
       //   }
       // })
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
