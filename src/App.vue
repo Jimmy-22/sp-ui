@@ -70,7 +70,7 @@
 }
 
 .el-aside {
-  background-color: #d3dce6;
+  /* background-color: #d3dce6; */
   color: #333;
 }
 
@@ -80,6 +80,6 @@
 }
 
 body > .el-container {
-  margin-bottom: 40px;
+  height: 100vh;
 }
 </style>
